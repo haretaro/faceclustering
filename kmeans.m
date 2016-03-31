@@ -1,9 +1,10 @@
-function result = kmeans(X, y, label_num, max_iterr)
+function [result, error] = kmeans(X, y, label_num, max_iter)
 result = y;
 m = size(X,1);
 n = size(X,2);
+error = zeros(max_iter,1);
+for iter = 1:max_iter
 
-for itter = 1:max_iterr
   bin = zeros(label_num, m);
   for k = 1:label_num
     bin(k,:) = (y == k)';
@@ -15,8 +16,10 @@ for itter = 1:max_iterr
     for k=1:label_num
       W(k,:) = x;
     end
-    [a,cluster] = min(norms(W - means));
-    result(i) = cluster;
+    [distance ,cluster] = min(norms(W - means));
+    error(iter) = error(iter) + distance;
+    y(i) = cluster;
   end
 end
+result = y;
 end
