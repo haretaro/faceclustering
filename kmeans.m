@@ -16,10 +16,11 @@ for iter = 1:max_iter
     for k=1:label_num
       W(k,:) = x;
     end
-    [distance ,cluster] = min(norms(W - means));
+    [distance ,cluster] = min(norms(W - means, Inf));
     error(iter) = error(iter) + distance;
     y(i) = cluster;
   end
 end
 result = y;
+error = error/m
 end

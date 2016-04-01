@@ -8,7 +8,6 @@ init_y = init_y(:,1);
 [y,error] = kmeans(X,init_y, cluster_num, iter_num);
 for k=1:cluster_num
   c = X(y==k,:);
-  %fprintf("cluster %d\n",k);
   size(c)
   if (size(c,1) > 0)
     show(mean(c),pictsize);
