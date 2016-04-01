@@ -9,7 +9,7 @@ for iter = 1:max_iter
   for k = 1:label_num
     bin(k,:) = (y == k)';
   end
-  means = bin * X ./ m;
+  means = bin * X ./ sum(bin,2);
   for i=1:m
     x = X(i,:);
     W = zeros(label_num, n);

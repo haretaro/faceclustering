@@ -13,12 +13,6 @@ c1 = X(y == 1, :);
 c2 = X(y == 2, :);
 plot(c1(:,1),c1(:,2),'ro',c2(:,1),c2(:,2),'bo')
 hold on
-bin = zeros(2, m);
-for k = 1:2
-  bin(k,:) = (y == k)';
-end
-means = bin * X ./ m;
-%means = [mean(c1);mean(c2)];
 plot(means(:,1),means(:,2),'gh','MarkerSize',10);
 pause
 hold off
